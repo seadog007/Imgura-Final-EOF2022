@@ -4,14 +4,13 @@
 
 - Each round lasts for 5 minutes.
 - Service port number for each team is {30000 + CTFd_team_id}
-- Port 30001 is used by an NPC. It will never have WAF or restart.
-- You can gain up to ~2700 points in this challenge in total.
+- Port 30005 is used by an NPC. It will never have WAF or restart.
 
 ## TL;DR
 
 - **Attack:** 找到洞，打出能拿到全場各隊 flag 的 exploit，然後提交 flag，拿越多 flag 越多分
-- **Defense:** 寫 WAF 防止別隊打你，防下來所有的攻擊，分數就是你的（不能上那種 ban 特定使用者、IP 等的 WAF，被發現會有 penalty；不要當雞巴人）
-- 其他重要的規則：都寫在首頁那些功能介紹上ㄌ
+- **Defense:** 寫 WAF 防止別隊打你，防下來所有的攻擊，分數就是你的（不能上那種 ban 特定使用者、IP 等的 WAF）
+- 其他重要的規則：都寫在首頁那些功能介紹上了
 - **Service check:** 預設 docker 跑起來正常使用會動的功能都要能動。
 
 - **How to get attack points**: Find out the vulnerability and steal flags from other teams and submit them via our welcome page or API. The more flags you submit, the more points you get.
@@ -54,5 +53,6 @@ Please report to the CTF organizers if you find other teams violating the rules.
 
 > Some of the rules are borrowed from 2020 HITCON × Balsn CTF.
 > author: splitline
+> modified by: seadog007
 
 

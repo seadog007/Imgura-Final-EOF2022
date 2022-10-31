@@ -10,7 +10,6 @@ const TEAMS = require('./teams.json');
 const TOKENS = require('./tokens.json');
 
 const app = express();
-const ctfdHost = process.env['CTFD_HOST'] || 'http://127.0.0.1:4000';
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -59,33 +58,11 @@ app.get('/waf/:id', (req, res) => {
 
 app.post('/api/get_token', (req, res) => {
     const token = req.body.token.toString();
-    axios.get(`${ctfdHost}/api/v1/teams/me`, {
-        headers: {
-            'Authorization': `Token ${token}`,
-            'Content-Type': 'application/json'
-        }
-    }).then(({ data }) => {
-	console.log(data)
-        if (data.success !== true) {
-            return res.status(401).json({
-                success: false,
-                message: 'Invalid token'
-            });
-        }
-
-        res.json({
-            success: true,
-            message: 'Your token for this challenge is ' + TEAMS[data.data.id].token,
-            data: TEAMS[data.data.id]
-        }).send();
-    }).catch(err =>{
-	console.log(err.toString());
-        res.json({
-            success: false,
-            message: 'Invalid token'
-        }).send()
-    }
-    );
+    res.json({
+        success: true,
+        message: 'Your token for this challenge is ' + TEAMS[token].token,
+        data: TEAMS[token]
+    }).send();
 });
 
 app.get('/api/me', (req, res) => {

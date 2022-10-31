@@ -12,10 +12,14 @@
 <body>
     <div class="main">
         <div class="hidden" id="auth-panel">
-            <h1>Input your CTFd access token</h1>
-            <input type="text" id="ctfd-token">
+            <h1>Select Team ID to join Team</h1>
+            <select id="ctfd-token">
+                <option value="1">Team 1</option>
+                <option value="2">Team 2</option>
+                <option value="3">Team 3</option>
+                <option value="4">Team 4</option>
+              </select>
             <button>Submit</button>
-	    <p>You can get your CTFd access token from <a href="http://eof.ais3.org/settings#tokens">here</a>.</p>
         </div>
         <div class="hidden" id="manage-panel">
             <div class="landing">
@@ -40,7 +44,7 @@
             <hr>
             <div class="tools">
                 <h3>Submit Flag 🏴‍☠️</h3>
-                <p>提交其他隊伍機器上的 flag，建議直接使用 API，畢竟你有 25 隊要打。</p>
+                <p>提交其他隊伍機器上的 flag，建議直接使用 API</p>
                 <p>Please submit flags you stole from other teams. We recommend you use the flag submission API instead of submitting flags manually. The API usage is illustrated below.</p>
                 <div>
                     <strong>API usage: </strong><div id="submit-flag-api"></div>
@@ -68,7 +72,7 @@
         </div>
     </div>
     <footer>
-        Copyright © 2022 splitline@EOF2022，寫這個整個東東有夠肝。
+        Copyright © 2022 splitline @ EOF2022
     </footer>
     <script src="/app.js"></script>
 </body>
