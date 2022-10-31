@@ -22,7 +22,7 @@
                 document.getElementById('last-recreate').innerText = res.data.lastRestart ? new Date(res.data.lastRestart).toLocaleString() : "Never";
                 document.getElementById('last-update').innerText = res.data.lastPatch ? new Date(res.data.lastPatch).toLocaleString() : 'Never';
 
-                document.getElementById('submit-flag-api').innerText = `curl '${location.origin}/api/flag' -H 'Content-type: application/json' -H 'Token: ${token}' --data '{"id": <team-id>, "flag": "EOF{deadbeef}"}'`;
+                document.getElementById('submit-flag-api').innerText = `curl '${location.origin}/api/flag' -H 'Content-type: application/json' -H 'Token: ${token}' --data '{"id": <team-id>, "flag": "FLAG{deadbeef}"}'`;
                 fetch('/waf/' + res.data.id).then(res => res.text()).then(res => {
                     document.querySelector('textarea[name="waf"]').value = res;
                 })

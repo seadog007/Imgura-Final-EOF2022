@@ -12,14 +12,6 @@ from checker import check_all
 
 os.chdir('/manager/')
 
-# ========= CONSTANTS =========
-
-chal_id = int(os.getenv("CHALLENGE_ID", 1))
-chal_token = os.getenv("CHALLENGE_TOKEN", "")
-ctfd_host = os.getenv('CTFD_HOST', 'http://127.0.0.1:4000')
-
-# ==============================
-
 round_id = datetime.now(tz=timezone(timedelta(hours=+8))
                         ).strftime('%Y%m%d-%H-%M')
 if not os.path.exists(f"rounds/{round_id}/"):
@@ -31,7 +23,7 @@ total_score = json.load(open("/manager/score.json"))
 
 
 def generate_flag():
-    return "EOF{%s}" % secrets.token_hex(32)
+    return "FLAG{%s}" % secrets.token_hex(32)
 
 
 def service_check(team_ids):
@@ -145,21 +137,3 @@ if __name__ == "__main__":
     
     shutil.copy('/manager/public/scoreboard.json', 'rounds/%s/scoreboard.json' % (round_id))
     shutil.copy('/manager/score.json', 'rounds/%s/score.json' % (round_id))
-
-    submit = {
-        "id": chal_id,
-        "token": chal_token,
-        "attacks": {
-            team_id: round(len(data['attack']) * 0.6) for team_id, data in scoreboard_data.items()
-        },
-        "defenses": [
-            team_id for team_id, data in scoreboard_data.items() if data['defense']
-        ]
-    }
-    print("Submitting:", submit)
-    api_endpoint = f"{ctfd_host}/plugins/awd/api/update"
-    res = requests.post(api_endpoint, json=submit, verify=False).json()
-    if res['success']:
-        print("[+] Update successful")
-    else:
-        print('[x] Update failed:', res['message'])

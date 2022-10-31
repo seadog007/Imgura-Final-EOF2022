@@ -4,7 +4,7 @@ import os
 
 
 def generate_flag():
-    return "EOF{%s}" % secrets.token_hex(32)
+    return "FLAG{%s}" % secrets.token_hex(32)
 
 
 if __name__ == "__main__":

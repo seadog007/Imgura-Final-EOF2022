@@ -3,7 +3,7 @@
 ## Basic information
 
 - Each round lasts for 5 minutes.
-- Service port number for each team is {30000 + CTFd_team_id}
+- Service port number for each team is {30000 + team_id}
 - Port 30005 is used by an NPC. It will never have WAF or restart.
 
 ## TL;DR
@@ -22,7 +22,7 @@
 ## Scoring
 
 - Attack point
-    - CTFd score = round(FLAG_NUM * 0.6)
+    - score = round(FLAG_NUM * 0.6)
     - It means that one team can get 15 points at most in each round.
     - In each round, the challenge system regenerates the flag for each team at the beginning of the round. The flag is only valid in this round.
 
@@ -33,7 +33,7 @@
         3. All default services pass the service check.
         4. The team did NOT restart the instance nor update WAF rules.
 
-- In short, one team can get up to 22 points (15 attack points + 7 defense points) on CTFd in each round.
+- In short, one team can get up to 22 points (15 attack points + 7 defense points) in each round.
 
 ## WAF
 
